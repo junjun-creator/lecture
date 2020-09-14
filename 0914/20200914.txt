@@ -1,0 +1,20 @@
+Integer.toString : 정수 > 문자열 변환
+Integer.parseInt : 문자열숫자 > 정수 변환
+
+예를들어
+String s1 = "아이유";
+String s2 = "아이유";
+System.out.println(s1==s2);
+의 결과는 어떻게 될까? true 이다.
+s1과 s2가 각각 서로 다른 객체로 생성 될줄 알았는데, 자바는 같은 문자열을 객체로 생성할 경우,
+따로 만들지 않고 같은 문자열을 참조하게 한다. 즉 같은 객체인 것이다.
+
+String에는 여러 함수들이 존재한다.
+예를들어 변경을 하게된다! 그럼 원본이 변경되나? 아니오
+원본은 그대로 두고 사본을 변경해서 제공해준다.
+
+문자열 길이 출력 String.length();
+문자의 위치 출력 String.indexOf("해당문자");
+
+String.substring(start,end); 시작위치부터 end인덱스-1 까지 잘라냄
+String.substring(start); 시작 위치부터 끝까지 잘라냄
