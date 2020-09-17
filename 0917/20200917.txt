@@ -1,0 +1,3 @@
+Thread.sleep(millisecond); 실행을 잠시 중단 시킬때 씀.
+
+코드의 실행 과정을 잘 분석해보자!!!
