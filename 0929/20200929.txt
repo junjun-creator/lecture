@@ -1,0 +1,13 @@
+AWT(Abstract Window Toolkit
+
+frame.setVisible(true) > update() 호출 > paint()호출
+paint()를 override 하면  오버라이드 한 paint() 호출
+
+frame.add를 통해 컴포넌트를 중첩해서 쌓음. 가장 마지막에 넣은 아이가 보임.(덮어씌움)-레이아웃 배치 가능
+
+그림을 그릴 영역으로 canvas 컴포넌트를 frame에 add 하면 됨.
+canvas에 배경을 넣어주고 싶을땐 add 전에 canvas.setBackground(Color.blue);로 배경색을 넣어주고
+그 위에 그림을 그려주고 싶으면 paint함수를 override해서 그릴 그림을 그려주면 됨.
+(Canvas 클래스를 상속받는 새로운 클래스 생성하여 override)
+
+원하는 것을 고쳐 쓸수 있게 함( 추상 클래스)
