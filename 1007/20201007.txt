@@ -1,0 +1,20 @@
+Image buffI = this.createImage(this.getWidth(), this.getHeight()); 더블 버퍼링을 위해 도화지를 하나 생성
+Graphics buffG = buffI.getGraphics();// 도화지에 그림 그릴 도구를 생성함.
+
+기존에는 paint(Graphics g) 에서 매개변수로 주어진 g, 즉 , 윈도우 이미지에 그리는 도구인 g를 사용해서
+그림을 그려왔다.
+
+하지만 잔상을 지우기 위해, 새로운 도화지(image)를 생성하여 그 image에 그림을 그려서,
+윈도우에 붙이는 작업으로 잔상을 지울 것이다.
+
+그래서 image를 생성하고, 해당 image에 그림을 그릴 도구를 생성해서
+그 도구를 활용하여 그림을 그린 뒤에, 다 그린 그림을 마지막에 윈도우에 붙여준다.
+
+repaint() //// >>> Canvas.update(// 삭제) > paint();
+
+ActionCanvas extends Canvas >> update overriding >> ActionCanvas.update();
+
+
+---- repaint >> ActionCanvas.update() >> paint();
+
+
