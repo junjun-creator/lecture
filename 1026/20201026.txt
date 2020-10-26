@@ -1,0 +1,32 @@
+데이터를 메모리상에서 관리하는 일이 많아지면서
+
+정렬, 필터링 등을 수행해야 할 일이 많아짐.
+매번 일일이 이런 작업을 수행하기엔 좋지 않음.
+
+>> 자바에서 제공하는 API : Stream 을 활용하여 이러한 작업들을 수행해보자.
+
+*************List는 인터페이스이므로, new를 할 수 없다.(그걸 구현하고 있는 ArrayList와 같은 아이를 써야한다.
+
+Stream<Integer> fnums = nums
+		.stream()
+		.filter(new Predicate<Integer>() {//Stream<Integer>형으로 반환
+			//필터링 할 기준
+			//스트림이 쭉 돌면서 true인 것들만 읽어들임
+			@Override
+			public boolean test(Integer t) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		});
+
+이렇게 인터페이스를 구현하다 보니, 코드 가독성이 떨어지기 시작한다.(복잡도 증가)
+
+이를 해결하기 위해 >> 람다식 등장. (인터페이스를 구현하는 새로운 표현식)
+
+n -> n>3 리턴값
+매개변수
+
+() -> { return n>3; }
+매개변수 없을때
+
+람다식은 함수약속이 하나인 인터페이스 구현에만 사용 가능하다.(2개 이상은 안됨. 리턴값이 있는 곳에만 사용)
