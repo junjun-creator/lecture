@@ -1,0 +1,24 @@
+#header>h1+nav+nav{
+    color: orange;
+    --background-color: yellow;
+}
+
+.header{
+    height: 71px;
+    background-color: royalblue;
+}
+
+.visual{
+    height: 171px;
+    background-color: salmon;
+}
+
+.body{
+    min-height: 300px;
+    background-color: seagreen;
+}
+
+.footer{
+    height: 100px;
+    background-color: slateblue;
+}
