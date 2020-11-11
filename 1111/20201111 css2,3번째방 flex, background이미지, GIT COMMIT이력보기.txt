@@ -1,0 +1,48 @@
+CSS
+가변 길이 단위 : rem, em, ex
+em > 대문자 높이 >> font-size 기준(부모에 폰트사이즈가 상속된경우도 적용됨, 지역적으로 사이즈 변환)
+ex > 소문자 높이
+rem > root에 적용된 font-size 기준으로 잡겠다(html 태그 기준)
+
+다양한 컬러
+hsl color
+hsla model
+system color
+
+가변 크기 영역 : min-height, min-width
+
+부모의 높이값이 정해져있을때, 그 높이를 따라가게 만들고 싶으면 %비율로 적거나, inherit으로 지정해준다.
+inherit과 100%는 차이가 있다.
+만약 부모가 부모의 부모의 것을 50%로 높이값을 갖고있을때, inherit하면 그 50%의 50%를 높이로 갖게 되고,
+100%를 하게되면 부모의 높이(50%)를 그대로 갖는다.
+
+만일 부모의 height값이 없고, min-height값이 정해져 있을 경우, height는 0이다.
+즉 height의 100%를 쓸경우, 0이므로 나타나지 않는다.
+이럴때는 min-height = inherit을 사용해야한다.(100%는 안됨)
+
+가운데정렬 : margin auto
+기본적으로 왼쪽 정렬이다(오른쪽에 여백이 마진이다). 이 상태에서 margin-left: auto;를 하게되면 오른쪽에 있던 모든 마진을 왼쪽이 가진다.
+반대로, margin-right: auto;를 하게되면 오른쪽이 모든 마진을 갖는다.
+서로 동시에 left, right에 auto값을 주면 마진을 반반 가져간다.
+
+컨텐츠의 레이아웃을 잡을때는 flex(레이아웃 관리자)를 쓸거다~!!!*************************
+
+레이아웃을 위한 display 방식
+
+FLEX : 레이아웃 관리자
+인라인이든 블럭이든 flex-item의 display방식이 된다. 즉 아무것이든 다 flex방식으로 정렬할것이다
+
+border는 나중에 포함되는 녀석이 설정하는게 좋다.
+border 안쪽에 공간만들때 padding, 바깥쪽에 공간만들때 margin
+
+(웹 만들때 폰트, 아이콘, 여백, 색감 설정 잘하기!)
+
+background에 배경색과, 이미지를 함께 넣을때
+background: #313131 url(../img/bg-visual.png) no-repeat center;
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+git
+commit 이력 보기 >> git log
+commit 이력을 한줄로보기 >> git log --oneline
+2개의 commit 보기 >> git log -n 2 --oneline
+특정범위의 commit 보기 >> git log da453a3(exclude)..888625a(include) --oneline
