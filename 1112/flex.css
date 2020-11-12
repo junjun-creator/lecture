@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    background-color: beige;
+}
+
+.container>div{
+    flex-basis: 200px;
+    --min-width: 200px;
+    flex-grow: 1;
+    background-color: purple;
+    border: 1px solid gray;
+    flex-shrink: 0;
+}
+
+.container>div:nth-child(3){
+    --flex-grow: 1;
+    background-color: lawngreen;
+}
+
+.container>div:nth-child(4){
+    --flex-grow: 1;
+    flex-shrink: 3;
+}
