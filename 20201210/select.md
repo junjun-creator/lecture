@@ -1,0 +1,87 @@
+# SELECT 구문
+  - 사용자의 정보를 조회
+  
+# 산술연산을 통한 조회
+  - 숫자연산 +
+    - SELECT TITLE, HIT+1 AS HIT FROM NOTICE;
+    - 컬럼명이 HIT+1이 되므로 AS를 통해 이름 지정
+    - 만일 TITLE에 +1을 한다면? >> 에러가 남.(수치가 부적합하다는 에러 발생)
+  - 문자열 연산 ||
+    - SELECT '3' || 10 FROM DUAL; >> 결과 310
+    - SELECT '3' + 10 FROM DUAL; >> 결과 13
+  - 비교연산자
+    - =, !=, ^=, <>, >, <, >=, <=, IS NULL, IS NOT NULL
+      - !=, ^=, <> 는 동일한 연산자
+      - 비교연산자는 WHERE절에 사용함.
+    - NOT, AND, OR, BETWEEN, IN
+      - 연속된 값
+        - SELECT * FROM NOTICE WHERE HIT=0 OR HIT=1 OR HIT=2
+        - SELECT * FROM NOTICE WHERE 0 <= HIT AND HIT <= 2
+        - SELECT * FROM NOTICE WHERE HIT BETWEEN 0 AND 2
+      - 연속되지 않은 값
+        - SELECT * FROM NOTICE WHERE HIT IN (0,2,7) <-> NOT IN(여집합 관계)
+    - LIKE %, _  
+      - 패턴으로 조회
+        - SELECT * FROM MEMBER WHERE NAME LIKE '박%';
+        - % : 글자수 한정 X
+        - _ : 글자수 한정
+    - 조금 더 세밀한 조회 방법
+      - 정규표현식
+        - 여자 주민번호 패턴 : ^\d{6}-[24]\d{6}&
+        - 1980년대 5월,7월,9월 생을 찾으시오
+          - ^8\d[01]\d[0123]\d-[12]\d{6}&
+      - 쿼리에 적용방법
+        - REGEXP_LIKE(컬럼명, 정규표현식)
+# 제한적인 부분(특정부분)만 조회
+  - 행을 제한하기
+    - ROWNUM
+      - SELECT ROWNUM, MEMBER.* FROM MEMBER WHERE ROWNUM BETWEEN 1 AND 5
+      - 순서대로 정렬
+      - 실행순서 이해하기
+        - FROM
+        - WHERE : 이게 완료되면 ROWNUM 이 실행됨
+        - SELECT
+      - 무조건 1부터 시작해야함.
+        - 1부터 시작해서 생성되는데, WHERE 절의 조건을 검사해서 조건에 만족을 해야 그다음 번호가 계속해서 저장됨
+      - 결과를 페이징 하고싶으면?
+        - ROWNUM의 모든 값을 담는 테이블을 서브쿼리로 만들고 그 테이블에서 범위를 지정하여 페이징 가능
+        - SELECT * FROM (SELECT ROWNUM AS NUM, MEMBER.* FROM MEMBER) WHERE NUM BETWEEN 1 AND 5
+# 중복 제거 DISTINCT
+# 함수
+  - LENGTH()
+    - SELECT * FROM MEMBER WHERE LENGTH(NICNAME) <= 3
+  - SUBSTR('DDDDDDD',3)
+    - 잘라내기
+  - 이외의 여러 함수들도 존재한다.
+# SELECT문의 구절
+  - 작성 순서 : SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+  - 실행 순서 : FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY
+  - 집계하기
+    - SUM, MIN, MAX, COUNT, AVG
+    - COUNT(속성) : 속성에 값이 있는 갯수. NULL값은 세지 않음
+    - 모든 집계함수는 속성에 따라서 결과가 달라질수 있음을 주의.
+    - WHERE 절에서는 집계함수 사용 불가.
+  - 그룹별 집계
+    - GROUPBY : ~ 별
+      - EX)회원별 구매액 조회 가능
+    - 작성자별 게시글 수 조회하기
+      - SELECT WRITER_ID, COUNT(ID) FROM NOTICE GROUP BY WRITER_ID
+  - HAVING
+    - WHERE절과 같은 기능이지만, 집계한 뒤에 집계함수를 활용하여 조건을 달아주고 싶을때.
+    - 작성자별 게시글 수를 조회, 게시글 수가 2개 이상인 것만 조회
+      - SELECT WRITER_ID, COUNT(ID) FROM NOTICE GROUP BY WRITER_ID HAVING COUNT(ID) > 2
+  - ORDER BY
+    - ACS : 오름차순
+    - DESC : 내림차순
+    - 작성자별 게시글 수를 조회, 게시글 수가 2개 이상인 것을 게시글 수로 내림차순(오름차순) 정렬
+      - SELECT WRITER_ID, COUNT(ID) FROM NOTICE GROUP BY WRITER_ID HAVING COUNT(ID) > 2 ORDER BY 속성명 DESC(ASC)
+# 서브쿼리
+  - 구절의 순서를 바꿔야 하는 경우
+    - 최신 등록순으로 정렬한 결과에서 상위 열명을 원하는 경우라면? - 정렬이 먼저 일어날 수는 없기때문에 서브쿼리를 통해 정렬을 먼저 해주고 그 정렬된 결과중에서 상위 10개를 가져온다
+      - SELECT * FROM (SELECT * FROM NOTICE ORDER BY REGDAYE DESC) WHERE ROWNUM BETWEEN 1 AND 10
+    - 그렇다면 2번째 페이지를 보려면?
+      - SELECT * FROM (SELECT ROWNUM NUM, M.* FROM (SELECT * FROM NOTICE ORDER BY REGDATE DESC) M) WHERE NUM BETWEEN 11 AND 20
+      - 먼저 등록일자 순으로 정렬 = M
+      - 그 정렬된 M을 가지고 순서 번호를 매겨주고,
+      - 매겨진 번호들을 페이지에 들어갈 번호로 뽑아주면 됨.
+  - 즉, 서브쿼리는 먼저 실행해서 얻어야할 값 또는 값들의 집합, 레코드의 집합이 필요할때 사용한다.
