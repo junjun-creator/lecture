@@ -1,0 +1,51 @@
+# 서브쿼리2
+  - 서브쿼리로 뽑아낼 내용이 값이라면, 서브쿼리의 결과는 단일값이 나와야 한다.
+  - 서브쿼리의 사용처에 따라서 나와야 할 결과가 다르다.
+  - 하지만 값으 비교하기 위해 작성한 서브쿼리가 여러개의 값을 가져올 수도 있다.
+    - select * from notice where hit > all(select max(hit) from notice group by writer_id)
+    - 서브쿼리의 결과 모든것보다 큰 hit를 가진 것만 조회한다.
+    - all(모든것 보다 ~~ 하다), any(이것들 중 어떤 하나 보다 ~~ 하다)
+# 조인(join)
+  - 정규화로 쪼개놓은 테이블들을 이어서 활용할 수 있도록 하는 방법
+  - inner join, outer join, self join, cross join(cartesian product)
+  - from절에 들어가는 연산
+    - select * from member inner join notice on member.? = notice.?;
+    - 결과는 무조건 자식이 주인공이다.
+    - 이것은 이너 조인이다
+  - inner join
+    - 테이블간에 관계가 있는 것들만 뽑아내는것.
+    - 연습
+      - 회원의 목록과 그 회원이 작성한 게시글의 수를 출력하시오
+      - select m.*, n.c from member m inner join (select writer_id, count(id) c from notice group by writer_id) n on m.nicnake=n.writer_id;
+      - select m.nicname, m.pwd, count(n.id) from member m join notice n on m.nicname=n.writer_id group by m.nicname, m.pwd;
+      - 동일한 결과. 왜 밑에것이 더 좋은것인가?
+  - outer join
+    - 관계가 있던 없던간에 outer들도 모두 포함 시켜서 조인하자!
+    - left, right, full
+    - 왼쪽(오른쪽)에 있는 outer까지 껴주자!
+      - select * from member left outer join notice on member.nicname=notice.writer_id;
+      - 조인 하되, 게시글을 쓰지 않은 멤버도 포함 해서 조인한다.
+  - 조인시 유의사항
+    - 조인은 무조건 주인공이 있어야한다.
+    - 보통 inner join은 자식이 주인공이다.
+    - 하지만 부모가 주인공이 될 수도 있다. 부모가 주인공일 경우, 자식의 내용을 붙이려면 통계만 붙일 수 있다.(자식 갯수만큼 부모가 늘어나서는 안되기 때문)
+    - 누가 중심인지 정확히 파악하자!
+  - 3중 조인
+    - 글을 쓴 회원과 그 글에 달린 댓글을 출력하시오
+      - select * from member m right join notice n on m.nicname=n.writer_id left join "comment" c on n.id=c.notice_id;
+# View
+  - 화면상에 보여지는 데이터와, 실제 데이터베이스의 구조는 다르다.
+  - 화면상에 보이는 것처럼 데이터베이스를 합쳐서 마치 실제 데이터 인것 처럼 두고 쓸 수 있다.
+  - 개념적인 테이블(가상)
+  - 조인문으로 만들어 둔 테이블을 viewㄹ 만들어서 쓰 수 있음.
+  - view 에는 order by와 where 절을 넣지 않는다.
+  - create view 뷰이름 as select ~~ ;
+# Union
+  - 통합검색, 등에 이용
+  - 합칠 테이블의 컬럼 수를 맞춰줘야 함.
+    - select col1,col2 from table1 union select col3,col4 from table2;
+  - union, minus, intersect, union all
+    - union : 중복 제거(한테이블 내에서 중복되는것도 제거됨)
+    - union all : 중복 포함
+    - minus : 같은 레코드를 제거하고 남은것(테이블 간 차집합)
+    - intersect : 테이블 간 교집합
