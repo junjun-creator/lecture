@@ -1,4 +1,4 @@
-오늘은 ES6 9번째 시간입니다
+오늘은 ES6 9,10번째 시간입니다
 
 > ## Today I Learned
   - Drag and Drop
@@ -25,5 +25,20 @@
     - 천테이너의 offset 위치를 얻어서 box위치를 추가 보정하는 방법
     - 첫번째 방식으로 해결해보자.
     
-   ![](https://images.velog.io/images/junjun-creator/post/a7dd3d0b-47f2-4ce9-95bd-2b050c47e435/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-11%20%EC%98%A4%ED%9B%84%2012.27.44.png)
+   ![](https://images.velog.io/images/junjun-creator/post/d369aad2-b86e-41b6-9b5b-12c3da9f0762/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-12%20%EC%98%A4%EC%A0%84%2010.34.27.png)
+   
+  - 컨테이너가 2개 이상일 때 박스 선택에 따른 드래그 설정
+  
+ ![](https://images.velog.io/images/junjun-creator/post/f91b1c0e-a7d0-4311-aa8b-85b7c3b8a792/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-12%20%EC%98%A4%EC%A0%84%2010.35.31.png)
+ 
+### 재사용가능한 캡슐화
+
+![](https://images.velog.io/images/junjun-creator/post/a2106459-e225-47c2-83b1-e64de309b049/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-12%20%EC%98%A4%EC%A0%84%2011.11.01.png)![](https://images.velog.io/images/junjun-creator/post/eeff12a5-bc9c-4b99-b90a-178adbe67a78/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-12%20%EC%98%A4%EC%A0%84%2011.11.10.png)
+
+  - 주의사항
+    - 외부에서 내부 this값을 사용하려 할때는 this를 전달해줘야함.
+    - 현재 예시에서는 mouseHandler()가 호출될때 this가 무엇인지를 모름. 그래서 그걸 알려줘야함
+      - bind(this)
+      
+   ![](https://images.velog.io/images/junjun-creator/post/2b9e3582-5227-49fe-b369-414ce2c1c53b/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-12%20%EC%98%A4%EC%A0%84%2011.31.18.png)
   
