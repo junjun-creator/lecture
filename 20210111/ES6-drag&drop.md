@@ -1,7 +1,8 @@
-오늘은 ES6 9,10번째 시간입니다
+오늘은 ES6 Drag&Drop 시간입니다
 
 > ## Today I Learned
   - Drag and Drop
+  - Upload를 위한 Drag Drop 박스
   
 ### Drag and Drop
 
@@ -42,3 +43,24 @@
       
    ![](https://images.velog.io/images/junjun-creator/post/2b9e3582-5227-49fe-b369-414ce2c1c53b/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-12%20%EC%98%A4%EC%A0%84%2011.31.18.png)
   
+### Upload를 위한 Drag Drop 박스
+  - HTML 드래그 앤 드롭 API
+  - 사용자로부터 입력을 받기 위한 행위이다.
+  
+ ![](https://images.velog.io/images/junjun-creator/post/9aebc409-9bc7-402e-8126-15bf7bebd458/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-13%20%EC%98%A4%EC%A0%84%2011.31.25.png)![](https://images.velog.io/images/junjun-creator/post/4bfff3cb-038a-44c4-b2a6-ff5fa5260f51/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-13%20%EC%98%A4%EC%A0%84%2011.34.05.png)
+ 
+  - 드래그 해오는 파일의 정보
+    - e.dataTransfer
+    - 이 정보를 통해 드래그 파일이 적합한지 유무 검사 가능
+    
+   ![](https://images.velog.io/images/junjun-creator/post/e8388c3a-00df-44ab-9b0d-e95a4d633b82/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-13%20%EC%98%A4%ED%9B%84%2012.04.30.png)
+   
+  - 파일 전송을 위한 ajax
+    - form태그에서 사용하던 multipart로 파일 전송하기
+      - 직접적으로 form태그를 사용하는것이아니기 때문에 api사용
+        - FormData API
+     ![](https://images.velog.io/images/junjun-creator/post/1f44ef43-5277-4231-8435-cc54f05adb41/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-13%20%EC%98%A4%ED%9B%84%2012.35.39.png)
+     
+    - 서버단에서 전송한 formData 처리하기
+      - MultipartFile객체를 통해 FormData로 전송한 파일들을 읽어오기
+     ![](https://images.velog.io/images/junjun-creator/post/97331e98-0c71-461e-9bd6-9bed684687af/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-13%20%EC%98%A4%ED%9B%84%2012.36.55.png)
