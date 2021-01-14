@@ -64,3 +64,25 @@
     - 서버단에서 전송한 formData 처리하기
       - MultipartFile객체를 통해 FormData로 전송한 파일들을 읽어오기
      ![](https://images.velog.io/images/junjun-creator/post/97331e98-0c71-461e-9bd6-9bed684687af/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-13%20%EC%98%A4%ED%9B%84%2012.36.55.png)
+     
+    - 전송 진척도 출력하는 코드 작성하기
+      - request.upload.addEventListener("progress")
+     ![](https://images.velog.io/images/junjun-creator/post/52af4fbd-936a-4479-ab2c-d33ae49a9d9a/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-14%20%EC%98%A4%EC%A0%84%2010.12.10.png)
+    - 전송파일 최대 크기 설정방법
+      - 개별 최대 크기, 전체 최대 크기 설정
+      - resources/application.properties
+     ![](https://images.velog.io/images/junjun-creator/post/cf7b43e6-4e2d-4b0c-a40d-a7d1283e48a6/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-14%20%EC%98%A4%EC%A0%84%2010.18.08.png)
+     
+    - 전송정보 출력하기
+      - status
+     ![](https://images.velog.io/images/junjun-creator/post/519cc352-e357-4f2b-8621-7a24ae225fbf/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-14%20%EC%98%A4%EC%A0%84%2010.15.10.png)
+     
+    - 서버로 전송된 파일 저장
+      - 파일 전송 경로 설정
+      - 전송 경로의 realPath 설정
+      - 해당 경로의 존재 유무 파악
+        - 존재하지 않을 시 생성
+      - 업로드 될 파일위치 설정
+      - 업로드 될 파일 위치 설정 후 해당 경로로 File객체 생성
+      - 클라이언트로부터 전송된 파일을 uploadedFile로 저장
+     ![](https://images.velog.io/images/junjun-creator/post/4750a8a5-d6aa-4ac3-823b-2897ef7a1130/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-14%20%EC%98%A4%EC%A0%84%2011.07.57.png)
