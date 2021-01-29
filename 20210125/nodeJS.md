@@ -121,6 +121,42 @@
   - 라우터를 활용하여 json 객체를 반환하는 api 만들기
   ![](https://images.velog.io/images/junjun-creator/post/32857202-fdfa-4bd6-bc85-81c837c2944e/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-28%20%EC%98%A4%ED%9B%84%2012.24.25.png)
   
+### express generator
+  - nodejs + express를 활용하여 웹 개발을 할때 기본적인 설정을 해둔 상태로 그것을 모듈로 제공한다면? 편리할 것이다.
+  - http, path, express 등 모듈들의 기본 세팅
+  - 그것을 제공하는 것이 express generator이다.
+  - $ <span style="color:red;">npx express-generator [--view=view엔진명] [폴더이름]</span>
+    - 현재 디렉토리에 있는 모듈들을 설치해야함
+      - $ <span style="color:red;">npm i</span>
+  - package.json의 scripts에 간편 명령어들을 정의할 수 있다.
+    - start : 서버 실행을 위한 명령어
+  - 주의사항
+    - Root 디렉토리(/)의 경우엔 express가 static 문서들을 먼저 참조한다면 index.html을 먼저 찾게됨.
+    - 라우터를 먼저 연결해주고 static을 연결 해주면 해결됨
+    ![](https://images.velog.io/images/junjun-creator/post/813e1ad8-991f-4e70-ab6e-8e764ed72c00/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%EC%A0%84%2010.52.26.png)
+
+### url 매핑 및 view rendering
+  - controller(router) 만들기
+  ![](https://images.velog.io/images/junjun-creator/post/7186556e-d9ae-4c76-8be7-af4a502a3560/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%EC%A0%84%2011.26.16.png)
+  - express가 해당 controller 사용하게 하기(app.js에서)
+  ![](https://images.velog.io/images/junjun-creator/post/3e2e09ce-0785-4b86-ae74-c2bb4fbde289/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%EC%A0%84%2011.27.18.png)
+  - controller(router)에서 url 매핑 및 렌더링 설정하기
+  ![](https://images.velog.io/images/junjun-creator/post/c6ff9faf-e3ed-44d6-b2ce-6a4c2836f632/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%EC%A0%84%2011.28.07.png)
+  
+### database 모듈 사용
+  - 모듈 설치
+    - $ <span style="color:red;">npm i mysql</span>
+  - connection 객체를 통해 query 실행
+  ![](https://images.velog.io/images/junjun-creator/post/3b5850ca-9a6b-4fba-9efd-26f83e322cf4/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%ED%9B%84%2012.27.50.png)
+  - view에 값 넣기
+  ![](https://images.velog.io/images/junjun-creator/post/3ff59ce4-8200-4831-bed0-43c6dc54c9c5/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%ED%9B%84%2012.28.49.png)
+  
+### commonJS vs ES6 module
+  - package.json에서 type 설정
+  - module.exports vs export & import
+  - 외부 모듈을 사용할때 왜 ES6 module을 안쓰고 commonJS를 쓰나?
+    - 호환성 문제
+    - 환경변수(\_\_dirname 등), 등 모듈이 사용하고 있는 기능들이 commonJS를 사용하고 있어서 호환성 문제가 생김 
 
 ### React app 생성
   - $ <span style="color:red;">npx create-react-app my-app</span>
