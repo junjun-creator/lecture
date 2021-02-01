@@ -151,6 +151,19 @@
   - view에 값 넣기
   ![](https://images.velog.io/images/junjun-creator/post/3ff59ce4-8200-4831-bed0-43c6dc54c9c5/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-01-29%20%EC%98%A4%ED%9B%84%2012.28.49.png)
   
+### 데이터베이스 모듈 분리
+  - 매 라우터마다 데이터베이스 모듈을 사용하는 코드가 있다면 비효율적이다.
+  - 집중화하여 필요한 곳에 꺼내 쓸 수 있도록 구성한다.
+  ![](https://images.velog.io/images/junjun-creator/post/df032a4b-1aa8-49b7-b887-728bd84e0847/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%EC%A0%84%2010.13.00.png)![](https://images.velog.io/images/junjun-creator/post/f7f3d5a2-ba04-49dc-b0bb-ab0da0cca0fd/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%EC%A0%84%2010.13.13.png)![](https://images.velog.io/images/junjun-creator/post/6d63d572-951c-425c-b7dc-9fc9fd8c7931/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%EC%A0%84%2010.13.28.png)
+  
+### nodeJS와 ReactApp 연동
+  - Node > ReactApp > Babel > Module(X):WebPack > bundle(배포본) > pure js
+  - 페이지를 컴포넌트 단위로 쪼개서 갈아끼우는 형식으로 SPA 구현
+    - App.js에 각각에 컴포넌트들을 끼워넣고 조립된 것을 리턴
+    ![](https://images.velog.io/images/junjun-creator/post/2aa6be59-5eb4-42da-8019-987be01e8ef0/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%ED%9B%84%2012.37.49.png)
+    - index.js에서 그 조립된 App을 사용
+    ![](https://images.velog.io/images/junjun-creator/post/32876a63-72bf-4301-82fb-fed9d1f863e5/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%ED%9B%84%2012.38.59.png)
+  
 ### commonJS vs ES6 module
   - package.json에서 type 설정
   - module.exports vs export & import
