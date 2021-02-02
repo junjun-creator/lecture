@@ -163,6 +163,30 @@
     ![](https://images.velog.io/images/junjun-creator/post/2aa6be59-5eb4-42da-8019-987be01e8ef0/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%ED%9B%84%2012.37.49.png)
     - index.js에서 그 조립된 App을 사용
     ![](https://images.velog.io/images/junjun-creator/post/32876a63-72bf-4301-82fb-fed9d1f863e5/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-01%20%EC%98%A4%ED%9B%84%2012.38.59.png)
+    
+### 페이지 switching
+  - 컴포넌트를 url에 따라서 switching 해줘야 한다.
+  - 라우팅 필요
+    - $ <span style="color:red;">npm i react-router-dom</span>
+  - 헤더에 라우팅 링크 설정
+  ![](https://images.velog.io/images/junjun-creator/post/80413f2b-9eeb-4c41-8594-2f7da40b2777/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%EC%A0%84%2010.19.22.png)![](https://images.velog.io/images/junjun-creator/post/2e20b6e2-b942-4493-ac3b-da42d9ce8163/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%EC%A0%84%2010.19.47.png)
+  - 각 컴포넌트 라우팅(App.js)
+  ![](https://images.velog.io/images/junjun-creator/post/cc559267-f9dd-4c6d-9941-64ee979dccf0/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%EC%A0%84%2010.21.56.png)
+  - Detail 페이지 설정
+    - list 영역과 detail 영역을 switching 하면 됨
+    ![](https://images.velog.io/images/junjun-creator/post/858c5951-c22a-490c-a1c6-56253135adc4/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%EC%A0%84%2011.50.09.png)
+  - list 영역 데이터 서버에서 불러오기
+    - 서버와 클라이언트가 모두 실행중인 상태에서 서버측에 데이터를 요청한다
+    - 서버에서 cors 허가가 있어야 서로 다른 도메인에 있는 데이터를 가져올 수 있다. 
+    - 서버단에 cors 모듈 설치 및 사용(app.js)
+      - $ <span style="color:red;">npm i cors</span>
+      ![](https://images.velog.io/images/junjun-creator/post/9c61b986-313f-40af-a314-ec541495e0e8/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%ED%9B%84%2012.14.45.png)![](https://images.velog.io/images/junjun-creator/post/f8f875f9-2aea-460c-9325-ae3a4d625d18/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%ED%9B%84%2012.14.53.png)
+    - 서버단에서 cors를 허용하고싶은 도메인이 따로 있다면 객체 형태로 전송해주면 됨
+      - app.use(cors({origin : "도메인주소"});
+
+### 각 detail 페이지 정보 불러오기
+  - 서버 api 설정(NoticeController.js)
+  ![](https://images.velog.io/images/junjun-creator/post/22cf0cd5-b22d-446b-a432-149cb6b63833/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%ED%9B%84%2012.20.31.png)
   
 ### commonJS vs ES6 module
   - package.json에서 type 설정
