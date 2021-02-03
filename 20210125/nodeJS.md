@@ -187,6 +187,22 @@
 ### 각 detail 페이지 정보 불러오기
   - 서버 api 설정(NoticeController.js)
   ![](https://images.velog.io/images/junjun-creator/post/22cf0cd5-b22d-446b-a432-149cb6b63833/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-02%20%EC%98%A4%ED%9B%84%2012.20.31.png)
+  - detail 페이지를 불러오기위한 Link 설정
+  ![](https://images.velog.io/images/junjun-creator/post/09716a53-071e-4613-beef-c6cb01196ba0/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-03%20%EC%98%A4%EC%A0%84%2010.01.10.png)
+  - detail api를 통해 데이터를 가져오기
+    - Route의 path 정보가 마치 스프링에서 PathVariable처럼 전달된다.
+    - props로 전달됨
+    ![](https://images.velog.io/images/junjun-creator/post/be167baf-fa16-4d7e-bf40-e2fd2eecdeb1/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-03%20%EC%98%A4%EC%A0%84%2010.02.50.png)
+    
+### login
+  - 입력하는 값 > ref로 current value 가져다 쓰기
+  ![](https://images.velog.io/images/junjun-creator/post/9f179aac-da72-4432-b951-81da7b3cf178/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-02-03%20%EC%98%A4%EC%A0%84%2011.39.39.png)
+  - 비밀번호 검증
+    - bcrypt로 비밀번호 검증
+    
+### 상태정보 유지하기
+  - state와 같은 전역변수 사용
+  - Redux 사용
   
 ### commonJS vs ES6 module
   - package.json에서 type 설정
